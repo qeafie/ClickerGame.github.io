@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ленивая игра</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="heading">
+                <h1>Кликер</h1>
+            </div>
+
+            <div class="description">Нажимайте на монетку, зарабатывайте деньги и покупайте улучшения
+                                    для автоматической добычи монет
+            </div>
+        </header>
+        <main>
+            <div class="canvas"><canvas id="canvas" onselectstart="return false" onmousedown="return false"></canvas></div>
+
+            <div class="game_right">
+                <div class="game_right_score">
+                    <div class="score_title">Вы уже заработали: </div>
+                    <div class="score_counter"><span class="counter" id="counter">0 &#8381</span></div>
+                    <br>
+					<div class="score_title">Вы зарабатываете в секунду: </div>
+					<div class = 'score_perSecond'>0 &#8381</div>
+                </div>
+                <div class="buttons">
+                    <hr class="hr">
+                    <button class="button" id="saveBut">Сохранить результат</button>
+                    <button class="button" id="loadBut">Загрузить результат</button>
+                    <hr class="hr">
+                    <button class="button" id="resetBut">Начать заново</button>
+                </div>
+
+
+
+            </div>
+            <div class="upgrades">
+                <div class="upgrades__title">Магазин улучшений</div>
+
+                <div class="upgrades__autoClick">
+                    <div class="autoClick__autoElem" id = 'buySupportBut'>
+                        <div class="autoElem__picture"><img src="img/engineer_1.png" alt="инженер"></div>
+                        <div class="autoElem__title"><button class="button">Нанять помощника<br>(+1 &#8381 в секунду)</button></div>
+                        <div class="autoElem__cost" id="costSupport">50 &#8381</div>
+                        <div class="autoElem__have">У вас  <span id='support'></span></div>
+                    </div>
+                    <div class="autoClick__autoElem" id = 'buyShopBut'>
+                        <div class="autoElem__picture"><img src="img/shop_1.png" alt="здание магазинчика"></div>
+                        <div class="autoElem__title"><button class="button">Открыть магазин<br>(+5 &#8381 в секунду)</button></div>
+                        <div class="autoElem__cost" id="costShop">1000 &#8381</div>
+                        <div class="autoElem__have">У вас  <span id='shop'></span></div>
+                    </div>
+
+                    <div class="autoClick__autoElem " id = 'buyBankBut'>
+                        <div class="autoElem__picture"><img src="img/bank_1.png" alt="здание банка"></div>
+                        <div class="autoElem__title"><button class="button">Построить банк<br>(+10 &#8381 в секунду)</button></div>
+                        <div class="autoElem__cost" id="costBank">5000 &#8381</div>
+                        <div class="autoElem__have">У вас  <span id='bank'></span></div>
+                    </div>
+
+                    <div class="autoClick__autoElem" id = 'buyOilBut'>
+                        <div class="autoElem__picture"><img src="img/oil_1.png" alt="канистра с нефьтю"></div>
+                        <div class="autoElem__title"><button class="button">Найти нефть<br>(+25 &#8381 в секунду)</button></div>
+                        <div class="autoElem__cost" id="costOil">10000 &#8381</div>
+                        <div class="autoElem__have">У вас  <span id='oil'></span></div>
+                    </div>
+                </div>
+                <hr class="hr">
+                <div class="coinUpdate">
+					<div class="autoClick__autoElem" id = 'silverCoin'>
+                        <div class="autoElem__picture"><img src="img/PNG/Silver/Silver_5.png" alt="серебрянная монетка"></div>
+                        <div class="autoElem__title"><button class="button">Улучшить монетку до серебрянной<br>(Доход увеличивается в 2 раза)</button></div>
+                        <div class="autoElem__cost" id="costSilverCoin">1000000 &#8381 (1 млн)</div>
+                    </div>
+					
+					<div class="autoClick__autoElem" id = 'goldCoin'>
+                        <div class="autoElem__picture"><img src="img/PNG/Gold/Gold_1.png" alt="золотая монетка"></div>
+                        <div class="autoElem__title"><button class="button">Улучшить монетку до <br> золотой<br>(Доход увеличивается в 3 раза)</button></div>
+                        <div class="autoElem__cost" id="costGoldCoin">1000000000 &#8381 (1 млрд)</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__left">Проект выполнил студент первого курса Шонин Денис</div>
+            <div class="footer__right">qeafie@yandex.ru</div>
+        </footer>
+    </div>
+
+
+<script src="sprites.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
