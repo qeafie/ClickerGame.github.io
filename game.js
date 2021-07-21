@@ -196,6 +196,7 @@ buyOilBut.onclick = function () {
     if (counter >= oil.price()){
         counter  = counter - oil.price();
         autoClick+= oil.perClick;
+	oil.quantity++;
         audioBuyUpdate.play();
         update();
     }
