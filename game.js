@@ -16,8 +16,8 @@ let silverUpgrade = document.querySelector('#silverCoin');
 const SILVER_COIN_COST = 1000000;
 let goldUpgrade = document.querySelector('#goldCoin');
 const GOLD_COIN_COST = 1000000000;
-let coinIsSilver = false;
-let coinIsGold = false;
+let coinIsSilver = 0;
+let coinIsGold = 0;
 
 class Upgrade {
     constructor(options) {
@@ -112,11 +112,11 @@ loadBut.onclick = function () {
 
 
     autoClick = (support.quantity * support.perClick) + (shop.quantity  * shop.perClick) + (bank.quantity * bank.perClick)+ (oil.quantity * oil.perClick);
-    if (localStorage.getItem('coinIsSilver')) {
+    if (+localStorage.getItem('coinIsSilver')) {
         autoClick *= 2;
         coinImage.src = 'img/silver-coin-sprite.png';
     }
-    if (localStorage.getItem('coinIsGold')) {
+    if (+localStorage.getItem('coinIsGold')) {
         autoClick *= 3;
         coinImage.src = 'img/gold-coin-sprite.png';
     }
@@ -134,8 +134,8 @@ resetBut.onclick = function () {
     bank.quantity = 0;
     oil.quantity = 0;
 
-    coinIsSilver = false;
-    coinIsGold = false;
+    coinIsSilver = 0;
+    coinIsGold = 0;
     update();
 }
 
@@ -190,7 +190,7 @@ silverUpgrade.onclick = function () {
             coinImage.src = 'img/silver-coin-sprite.png';
             counter = counter- SILVER_COIN_COST;
             autoClick *= 2;
-            coinIsSilver = true;
+            coinIsSilver = 1;
             update();
         }
     }
@@ -204,7 +204,7 @@ goldUpgrade.onclick = function () {
             coinImage.src = 'img/gold-coin-sprite.png';
             counter = counter- GOLD_COIN_COST;
             autoClick *= 3;
-            coinIsGold = true;
+            coinIsGold = 1;
             update();
         }
     }
