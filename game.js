@@ -19,6 +19,11 @@ const GOLD_COIN_COST = 1000000000;
 let coinIsSilver = 0;
 let coinIsGold = 0;
 
+let audioBuyUpdate = new Audio('audio/buy_update.mp3');
+let audioWrongBuyUpdate = new Audio('audio/wrong.mp3');
+let audioCoin = new Audio('audio/money_sound.mp3');
+
+
 class Upgrade {
     constructor(options) {
         this.BASE_COST = options.BASE_COST;
@@ -84,6 +89,7 @@ function update(){
 
 canvas.onclick  = function (){
     counter++;
+    audioCoin.play();
     update();
 }
 
@@ -152,7 +158,11 @@ buySupportBut.onclick = function () {
         counter  = counter - support.price();
         autoClick+= support.perClick;
         support.quantity++;
+        audioBuyUpdate.play();
         update();
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
@@ -161,7 +171,11 @@ buyShopBut.onclick = function () {
         counter  = counter - shop.price();
         autoClick += shop.perClick;
         shop.quantity++;
+        audioBuyUpdate.play();
         update();
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
@@ -170,7 +184,11 @@ buyBankBut.onclick = function () {
         counter  = counter - bank.price();
         autoClick+= bank.perClick;
         bank.quantity++;
+        audioBuyUpdate.play();
         update();
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
@@ -178,8 +196,11 @@ buyOilBut.onclick = function () {
     if (counter >= oil.price()){
         counter  = counter - oil.price();
         autoClick+= oil.perClick;
-        oil.quantity++;
+        audioBuyUpdate.play();
         update();
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
@@ -193,6 +214,12 @@ silverUpgrade.onclick = function () {
             coinIsSilver = 1;
             update();
         }
+        else {
+            audioWrongBuyUpdate.play();
+        }
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
@@ -207,6 +234,12 @@ goldUpgrade.onclick = function () {
             coinIsGold = 1;
             update();
         }
+        else {
+            audioWrongBuyUpdate.play();
+        }
+    }
+    else {
+        audioWrongBuyUpdate.play();
     }
 }
 
