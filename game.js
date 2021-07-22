@@ -1,6 +1,7 @@
 const MULTIPLIIER = 1.15;
 let counter = 0;
 let autoClick = 0;
+let coin = 0;
 let counterElem = document.querySelector("#counter");
 
 let saveBut = document.querySelector('#saveBut');
@@ -16,8 +17,7 @@ let silverUpgrade = document.querySelector('#silverCoin');
 const SILVER_COIN_COST = 1000000;
 let goldUpgrade = document.querySelector('#goldCoin');
 const GOLD_COIN_COST = 1000000000;
-let coinIsSilver = 0;
-let coinIsGold = 0;
+
 
 let audioBuyUpdate = new Audio('audio/buy_update.mp3');
 let audioWrongBuyUpdate = new Audio('audio/wrong.mp3');
@@ -117,9 +117,8 @@ localStorage.setItem('perClickShop',shop.perClick);
 localStorage.setItem('perClickBank',bank.perClick);
 localStorage.setItem('perClickOil',oil.perClick);
 
+localStorage.setItem('coin',coin);
 
-localStorage.setItem('coinIsSilver',coinIsSilver);
-localStorage.setItem('coinIsGold',coinIsGold);
 
 localStorage.setItem('autoClick',autoClick);
 }
@@ -150,6 +149,20 @@ loadBut.onclick = function () {
     //     autoClick *= 3;
     //     coinImage.src = 'img/gold-coin-sprite.png';
     // }
+
+
+    switch (+localStorage.getItem('coin')) {
+        case 0 : coinImage.src = 'img/bronze-coin-sprite.png';
+            break;
+        case 1 : coinImage.src = 'img/silver-coin-sprite.png';
+            break;
+        case 2 :  coinImage.src = 'img/gold-coin-sprite.png';
+            break;
+        default:  coinImage.src = 'img/bronze-coin-sprite.png';
+            break;
+
+
+    }
     update();
 }
 
@@ -170,8 +183,7 @@ resetBut.onclick = function () {
     oil.perClick = 47;
 
 
-    coinIsSilver = 0;
-    coinIsGold = 0;
+    coin = 0;
     update();
 }
 
@@ -246,7 +258,7 @@ silverUpgrade.onclick = function () {
             coinImage.src = 'img/silver-coin-sprite.png';
             counter = counter- SILVER_COIN_COST;
             autoClick *= 2;
-            coinIsSilver = 1;
+            coin = 1;
             update();
         }
         else {
@@ -266,7 +278,7 @@ goldUpgrade.onclick = function () {
             coinImage.src = 'img/gold-coin-sprite.png';
             counter = counter- GOLD_COIN_COST;
             autoClick *= 3;
-            coinIsGold = 1;
+            coin = 2;
             update();
         }
         else {
