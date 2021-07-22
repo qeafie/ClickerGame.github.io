@@ -35,7 +35,7 @@ class Upgrade {
     }
 
     getPerClick() {
-        return this.perClick * (MULTIPLIIER**this.quantity);
+        return this.perClick + this.perClick/10;
     }
 }
 
